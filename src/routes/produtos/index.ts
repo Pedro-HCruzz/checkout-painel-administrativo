@@ -8,4 +8,4 @@ const routes = Router();
 
 routes.post('/produtos', produtosController.adicionar)
 
-export default routes
+export default routes;
