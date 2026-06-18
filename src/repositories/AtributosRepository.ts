@@ -1,5 +1,6 @@
 import { IAdicionarAtributo } from "../controllers/schemas/AtributosSchema";
 import { PrismaFactory } from "../factories/PrismaFactory";
+import { Atributos } from "../models/Atributos";
 
 class AtributosRepository {
 
@@ -8,10 +9,17 @@ class AtributosRepository {
             { data:{
                 nome
             }
-        }
-    );
+        });
     }
 
+    async editar(dados: Atributos, id_atributo: string) {
+        return await PrismaFactory.atributos.update({
+            where: {
+                id: id_atributo
+            },
+            data: dados
+        });
+    }
 }
 
 export default AtributosRepository;
