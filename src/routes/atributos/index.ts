@@ -6,6 +6,8 @@ const atributosController = new AtributosController()
 
 const routes = Router();
 
+routes.get('/atributos', atributosController.buscarTodosAtributos);
+
 routes.post('/atributos', atributosController.adicionar);
 routes.post('/atributos/valor/:id', atributosController.adicionarValorAtributo);
 
