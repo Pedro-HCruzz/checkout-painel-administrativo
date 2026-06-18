@@ -11,7 +11,8 @@ class AtributosService {
     ){}
 
     async adicionar(dados: IAdicionarAtributo){
-        const atributoAdicionado = await this._atributosRepository.adicionar(dados.nome);
+        const payloadAdicionarAtributo = { ativo: dados.ativo, nome: dados.nome }
+        const atributoAdicionado = await this._atributosRepository.adicionar(payloadAdicionarAtributo);
 
         const retorno = {
             atributo: atributoAdicionado,
@@ -53,6 +54,14 @@ class AtributosService {
 
     async buscarTodos() {
         return await this._atributosRepository.buscarTodos();
+    }
+
+    async excluir(id: string){
+        return await this._atributosRepository.excluir(id);
+    }
+
+    async excluirValor(id: string){
+        return await this._valoresAtributosRepository.excluir(id);
     }
 }
 

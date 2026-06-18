@@ -51,7 +51,7 @@ class AtributosController {
             await EditarValor.validate(Req.body);
 
             const valorAtributoEditado = await AtributosServiceFactory.editarValorAtributo(Req.body, Req.params.id as string)
-            Res.status(201).json(valorAtributoEditado)
+            Res.status(200).json(valorAtributoEditado)
 
         } catch (err: any) {
            Res.status(400).json({ error: err.message }) 
@@ -64,6 +64,26 @@ class AtributosController {
             Res.json(retorno)
         } catch (err: any) {
             Res.status(400).json({error: err.message})
+        }
+    }
+
+    async excluirAtributo(Req: Request, Res: Response) {
+        try {
+            
+            const retorno = await AtributosServiceFactory.excluir(Req.params.id as string)
+            Res.status(200).json(retorno)
+        } catch (err: any) {
+            Res.status(400).json({ error: err.message});
+        }
+    }
+
+    async excluirValorAtributo(Req: Request, Res: Response) {
+        try {
+            
+            const retorno = await AtributosServiceFactory.excluirValor(Req.params.id as string)
+            Res.status(200).json(retorno)
+        } catch (err: any) {
+            Res.status(400).json({ error: err.message});
         }
     }
 }

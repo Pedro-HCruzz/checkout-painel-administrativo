@@ -27,6 +27,17 @@ class ValoresAtributosRepository {
             data: dados
         })
     }
+
+    async excluir(id: string){
+        return await PrismaFactory.valoresAtributos.update({
+            where: {
+                id
+            },
+            data: {
+                ativo: false
+            }
+        })
+    }
 }
 
 export default ValoresAtributosRepository;
