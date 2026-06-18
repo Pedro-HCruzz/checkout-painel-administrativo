@@ -1,4 +1,4 @@
-import { IAdicionarAtributo, IAdicionarValor, IEditarAtributo } from "../controllers/schemas/AtributosSchema";
+import { IAdicionarAtributo, IAdicionarValor, IEditarAtributo, IEditarValor } from "../controllers/schemas/AtributosSchema";
 import AtributosRepository from "../repositories/AtributosRepository";
 import { ValoresAtributosRepositoryFactory } from "../factories/ValoresAtributosFactory";
 import ValoresAtributosRepository from "../repositories/ValoresAtributosRepository";
@@ -45,6 +45,10 @@ class AtributosService {
 
     async editarAtributo(dados: IEditarAtributo, id_atributo:string) {
         return await this._atributosRepository.editar(dados, id_atributo);
+    }
+
+    async editarValorAtributo(dados: IEditarValor, id_valor_atributo:string) {
+        return await this._valoresAtributosRepository.editar(dados, id_valor_atributo);
     }
 }
 
