@@ -36,3 +36,12 @@ model ValoresAtributos {
 
   @@map("valores_atributos")
 }
+
+model Categorias {
+  id String @id @default(uuid())
+  nome String
+  ativo Boolean
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
