@@ -42,6 +42,25 @@ model Categorias {
   nome String
   ativo Boolean
 
+  produtos Produtos[]
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  @@map("categorias")
+}
+
+model Produtos {
+  id String @id @default(uuid())
+  id_categoria String
+  nome String
+  descricao String?
+  ativo Boolean
+
+  categoria Categorias @relation(fields: [id_categoria], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("produtos")
 }
