@@ -8,4 +8,6 @@ const routes = Router();
 
 routes.post('/produtos', produtosController.adicionar)
 
+routes.patch('/produtos/:id', produtosController.editar)
+
 export default routes;

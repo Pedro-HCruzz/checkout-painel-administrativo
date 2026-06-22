@@ -1,4 +1,4 @@
-import { IAdicionarProduto } from "../controllers/schemas/ProdutosSchema";
+import { IAdicionarProduto, IEditarProduto } from "../controllers/schemas/ProdutosSchema";
 import ProdutosRepository from "../repositories/ProdutosRepository";
 
 class ProdutosService {
@@ -19,6 +19,10 @@ class ProdutosService {
         console.log(produtoAdicionado);
 
         return produtoAdicionado;
+    }
+
+    async editar(dados: IEditarProduto, id: string,){
+        return await this._produtosRepository.editar(dados, id)
     }
 }
 

@@ -1,3 +1,4 @@
+import { IEditarProduto } from "../controllers/schemas/ProdutosSchema";
 import { PrismaFactory } from "../factories/PrismaFactory";
 import { Produtos } from "../models/Produtos";
 
@@ -8,7 +9,16 @@ class ProdutosRepository {
             data: dados
         });
     }
-    
+
+    async editar(dados: IEditarProduto, id: string) {
+        return await PrismaFactory.produtos.update({
+            where: {
+                id
+            }, 
+            data: dados
+        });
+    }
+
 }
 
 export default ProdutosRepository;
