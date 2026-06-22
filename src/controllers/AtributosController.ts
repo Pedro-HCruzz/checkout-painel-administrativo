@@ -1,5 +1,6 @@
 import { Response, Request } from "express"
 
+import { ValidarUUIDSchema } from "./schemas/GlobalSchema";
 import { Adicionar, AdicionarValor, EditarAtributo, EditarValor } from "./schemas/AtributosSchema"
 import { AtributosServiceFactory } from "../factories/AtributosFactory"
 
@@ -36,6 +37,8 @@ class AtributosController {
 
     async editarAtributo(Req: Request, Res: Response) {
         try {
+
+            await ValidarUUIDSchema.validate(Req.params.id)
             await EditarAtributo.validate(Req.body);
 
             const atributoEditado = await AtributosServiceFactory.editarAtributo(Req.body, Req.params.id as string)
@@ -48,6 +51,8 @@ class AtributosController {
 
     async editarValorAtributo(Req: Request, Res: Response) {
         try {
+
+            await ValidarUUIDSchema.validate(Req.params.id)
             await EditarValor.validate(Req.body);
 
             const valorAtributoEditado = await AtributosServiceFactory.editarValorAtributo(Req.body, Req.params.id as string)
@@ -69,7 +74,9 @@ class AtributosController {
 
     async excluirAtributo(Req: Request, Res: Response) {
         try {
-            
+
+            await ValidarUUIDSchema.validate(Req.params.id)
+
             const retorno = await AtributosServiceFactory.excluir(Req.params.id as string)
             Res.status(200).json(retorno)
         } catch (err: any) {
@@ -80,6 +87,8 @@ class AtributosController {
     async excluirValorAtributo(Req: Request, Res: Response) {
         try {
             
+            await ValidarUUIDSchema.validate(Req.params.id)
+
             const retorno = await AtributosServiceFactory.excluirValor(Req.params.id as string)
             Res.status(200).json(retorno)
         } catch (err: any) {

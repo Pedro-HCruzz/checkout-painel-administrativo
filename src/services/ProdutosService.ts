@@ -24,6 +24,10 @@ class ProdutosService {
     async editar(dados: IEditarProduto, id: string,){
         return await this._produtosRepository.editar(dados, id)
     }
+
+    async excluir(id: string,){
+        return await this._produtosRepository.excluir(id)
+    }
 }
 
 export default ProdutosService;
