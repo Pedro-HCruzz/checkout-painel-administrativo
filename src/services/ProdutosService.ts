@@ -7,6 +7,10 @@ class ProdutosService {
 
     }
 
+    async buscarTodos(){
+        return await this._produtosRepository.buscarTodos()
+    }
+
     async adicionar(dados: IAdicionarProduto){
         const payloadAdicionarProduto: IAdicionarProduto = {
             descricao: dados.descricao,

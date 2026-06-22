@@ -7,6 +7,15 @@ import { ProdutosServiceFactory } from "../factories/ProdutosFactory";
 
 class ProdutosController {
 
+    async buscarTodos(Req: Request, Res: Response){
+        try {
+           const retorno = await ProdutosServiceFactory.buscarTodos()
+            Res.status(201).json(retorno) 
+        } catch (err: any) {
+            Res.status(400).json({ error: err.message });
+        }
+    }
+
     async adicionar(Req: Request, Res: Response) {
         try {
             await AdicionarProduto.validate(Req.body);
