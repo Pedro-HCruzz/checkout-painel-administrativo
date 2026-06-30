@@ -3,7 +3,7 @@
     "descricao": "Camiseta MUITO Tecnologica",
     "id_categoria": "acb02989-c6a9-4760-bab2-8399ea927a9d",
     "ativo": true,
-    "variacoes": [
+    "variantes": [
         {
         "sku": "PROD-BR-M-001",
         "valores_atributos": [
@@ -12,12 +12,21 @@
         ],
         "preco": 100,
         "peso": 0.8,
-        "volume": 0.8,
+        "altura": 0.8,
+        "largura": 0.9,
+        "comprimento": 9,
         "estoque": 1000,
+        "ativo": true,
         "principal": true,
         "combo": false,
         "componentes": [],
-        "imagens": []
+        "imagens": [],
+        "caracteristicas_json": [
+            {
+                "chave": "teste",
+                "valor": "teste"
+            }
+        ]
         },
         {
         "sku":"PROD-BR-G-002",
@@ -27,8 +36,11 @@
         ],
         "preco": 1000,
         "peso": 0.8,
-        "volume": 0.8,
+        "altura": 0.8,
+        "largura": 0.9,
+        "comprimento": 9,
         "estoque": 1000,
+        "ativo": true,
         "principal": true,
         "combo": false,
         "componentes": [],
@@ -42,8 +54,11 @@
         ],
         "preco": 500,
         "peso": 0.8,
-        "volume": 0.8,
+        "altura": 0.8,
+        "largura": 0.9,
+        "comprimento": 9,
         "estoque": 1000,
+        "ativo": true,
         "principal": true,
         "combo": false,
         "componentes": [],
@@ -57,8 +72,11 @@
         ],
         "preco": 200,
         "peso": 0.8,
-        "volume": 0.8,
+        "altura": 0.8,
+        "largura": 0.9,
+        "comprimento": 9,
         "estoque": 1000,
+        "ativo": true,
         "principal": true,
         "combo": false,
         "componentes": [],
@@ -71,27 +89,27 @@
             "ebe7f480-d056-495f-829e-cff809dfd537"
         ],
         "preco": 0,
-        "peso": 0,
-        "volume": 0,
+        "peso": 0.8,
+        "altura": 0.8,
+        "largura": 0.9,
+        "comprimento": 9,
         "estoque": 0,
+        "ativo": true,
         "principal": false,
         "combo": true,
         "componentes": [
             {
-                "variacao_id": 100,
+                "id_variante": 100,
                 "quantidade": 2
             },
             {
-                "variacao_id": 103,
+                "id_variante": 103,
                 "quantidade": 2
             }
         ],
         "imagens": []
     }
     ],
-    "caracteristicas_json": {
-        "material": "modal"
-    },
     "tags": ["básica", "conforto", "verão"],
     "meta_title": "CAMISA BÁSICA",
     "meta_description": "Camiseta básica para uso",

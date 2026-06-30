@@ -1,13 +1,22 @@
 export interface Variantes {
-    id: string;
+    id?: string;
     id_produto: string;
     sku: string;
     preco: number;
     comprimento: number;
+    estoque: number;
+    peso: number;
+    combo: boolean;
     altura: number;
     largura: number;
     ativo: boolean;
     json_caracteristicas: any;
-    created_at: Date;
-    updated_at: Date;
+    principal: boolean;
+    created_at?: any;
+    updated_at?: any;
+}
+
+interface IComponentes {
+    id_variante: string
+    quantidade: number;
 }
