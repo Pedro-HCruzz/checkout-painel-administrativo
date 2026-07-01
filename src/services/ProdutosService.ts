@@ -88,6 +88,10 @@ class ProdutosService {
     async excluir(id: string,){
         return await this._produtosRepository.excluir(id)
     }
+
+    async desativarVariante(id: string,){
+        return await this._variantesService.desativarVariante(id)
+    }
 }
 
 export default ProdutosService;

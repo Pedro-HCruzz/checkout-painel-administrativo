@@ -26,6 +26,10 @@ class VariantesService {
     async buscarTodas(id_produto: string) {
         return await this._variantesRepository.buscarTodas(id_produto)
     }
+
+    async desativarVariante(id: string){
+        return await this._variantesRepository.desativar(id)
+    }
 }
 
 export default VariantesService;

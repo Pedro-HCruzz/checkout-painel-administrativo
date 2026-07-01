@@ -26,6 +26,17 @@ class VariantesRepository {
             data: dados
         })
     }
+
+    async desativar(id: string) {
+        return await PrismaFactory.variantes.update({
+            where: {
+                id
+            },
+            data: {
+              ativo: false  
+            } 
+        })
+    }
 }
 
 export default VariantesRepository;
