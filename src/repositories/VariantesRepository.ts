@@ -1,5 +1,6 @@
 import { Variantes } from "@prisma/client";
 import { PrismaFactory } from "../factories/PrismaFactory";
+import { IEditarVariante } from "../controllers/schemas/ProdutosSchema";
 
 class VariantesRepository {
 
@@ -14,6 +15,15 @@ class VariantesRepository {
             where: {
                 id_produto
             }
+        })
+    }
+
+    async editar(dados: IEditarVariante, id: string) {
+        return await PrismaFactory.variantes.update({
+            where: {
+                id
+            },
+            data: dados
         })
     }
 }

@@ -1,3 +1,4 @@
+import { IEditarVariante } from "../controllers/schemas/ProdutosSchema";
 import { Variantes } from "../models/Variantes";
 import { VariantesValores } from "../models/VariantesValores";
 import VariantesRepository from "../repositories/VariantesRepository";
@@ -15,6 +16,11 @@ class VariantesService {
 
     async adicionarVariantesValores(dados: VariantesValores[]) {
         return await this._variantesValoresRepository.adicionarVarios(dados)
+    }
+
+    async editarVariante(dados: IEditarVariante, id: string){
+        return await this._variantesRepository.editar(dados,id);
+
     }
 
     async buscarTodas(id_produto: string) {

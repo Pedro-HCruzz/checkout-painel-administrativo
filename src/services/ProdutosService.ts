@@ -1,4 +1,4 @@
-import { IAdicionarProduto, IAdicionarVariante, IEditarProduto } from "../controllers/schemas/ProdutosSchema";
+import { IAdicionarProduto, IAdicionarVariante, IEditarProduto, IEditarVariante } from "../controllers/schemas/ProdutosSchema";
 import { Variantes } from "../models/Variantes";
 import { VariantesValores } from "../models/VariantesValores";
 import ProdutosRepository from "../repositories/ProdutosRepository";
@@ -79,6 +79,10 @@ class ProdutosService {
 
     async editar(dados: IEditarProduto, id: string,){
         return await this._produtosRepository.editar(dados, id)
+    }
+    
+    async editarVariante(dados: IEditarVariante, id: string) {
+        return await this._variantesService.editarVariante(dados, id);
     }
 
     async excluir(id: string,){

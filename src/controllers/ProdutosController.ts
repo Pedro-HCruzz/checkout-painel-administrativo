@@ -1,6 +1,6 @@
 import {Request, Response } from "express";
 
-import { AdicionarProduto, EditarProduto } from "./schemas/ProdutosSchema";
+import { AdicionarProduto, EditarProduto, EditarVariante } from "./schemas/ProdutosSchema";
 import { ValidarUUIDSchema } from "./schemas/GlobalSchema";
 import { ProdutosServiceFactory } from "../factories/ProdutosFactory";
 
@@ -37,6 +37,21 @@ class ProdutosController {
             const retorno = await ProdutosServiceFactory.editar(Req.body, Req.params.id as string)
             Res.status(201).json(retorno)
 
+        } catch (err: any) {
+            Res.status(400).json({ error: err.message });
+        }
+    }
+
+    async editarVariante(Req: Request, Res: Response){
+        try {
+            
+            await ValidarUUIDSchema.validate(Req.params.id)
+            await EditarVariante.validate(Req.body);
+
+            const retorno = await ProdutosServiceFactory.editarVariante(Req.body, Req.params.id as string)
+            Res.status(201).json(retorno)
+
+            Res.json({status: "sucess"})
         } catch (err: any) {
             Res.status(400).json({ error: err.message });
         }
