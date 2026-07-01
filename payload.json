@@ -21,7 +21,7 @@
         "combo": false,
         "componentes": [],
         "imagens": [],
-        "caracteristicas_json": [
+        "json_caracteristicas": [
             {
                 "chave": "teste",
                 "valor": "teste"

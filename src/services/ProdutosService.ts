@@ -1,5 +1,6 @@
-import { Variantes } from "@prisma/client";
 import { IAdicionarProduto, IAdicionarVariante, IEditarProduto } from "../controllers/schemas/ProdutosSchema";
+import { Variantes } from "../models/Variantes";
+import { VariantesValores } from "../models/VariantesValores";
 import ProdutosRepository from "../repositories/ProdutosRepository";
 import VariantesService from "./VariantesService";
 
@@ -30,6 +31,27 @@ class ProdutosService {
         return [];
     }
 
+    async organizarPayloadAdicionarValorVariantes(variantesProduto: Variantes[], dados: IAdicionarVariante){
+        const retorno = variantesProduto.map((variante, index) => {
+            const varianteCorrespondenteFront = dados?.find(item => item.sku === variante.sku);
+
+            if(varianteCorrespondenteFront && varianteCorrespondenteFront.valores_atributos) {
+
+                const payload = []
+                for(let varianteFront of varianteCorrespondenteFront.valores_atributos) {
+                    payload.push({
+                        id_valor_atributo: varianteFront as string,
+                        id_variante: variante.id as string,
+                        ativo: true,
+                    })
+                }
+                return payload;
+            }
+            return [];
+        }); 
+        return retorno.flat();
+    }
+
     async adicionar(dados: IAdicionarProduto){
         const payloadAdicionarProduto: IAdicionarProduto = {
             descricao: dados.descricao,
@@ -44,9 +66,13 @@ class ProdutosService {
             const payloadAdicionarVariantes = await this.organizarPayloadAdicionarVariantes(produtoAdicionado.id as string, dados.variantes);
 
             await this._variantesService.adicionar(payloadAdicionarVariantes);
-        }
 
-        //console.log(dados.variantes)
+            const variantesProduto = await this._variantesService.buscarTodas(produtoAdicionado.id as string)
+            const payloadAdicionarVariantesValores = await this.organizarPayloadAdicionarValorVariantes(variantesProduto, dados.variantes);
+
+            const variantesValoresAdicionados = await this._variantesService.adicionarVariantesValores(payloadAdicionarVariantesValores);
+            console.log(variantesValoresAdicionados)
+        }
 
         return {status: "sucess"};
     }
