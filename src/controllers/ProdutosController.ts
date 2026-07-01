@@ -80,6 +80,18 @@ class ProdutosController {
             Res.status(400).json({ error: err.message });
         }
     }
+
+    async desativarValorVariante(Req: Request, Res: Response) {
+        try {
+
+            await ValidarUUIDSchema.validate(Req.params.id)
+
+            const retorno = await ProdutosServiceFactory.desativarValorVariante(Req.params.id as string)
+            Res.status(201).json(retorno)
+        } catch (err: any) {
+            Res.status(400).json({ error: err.message });
+        }
+    }
 }
 
 export default ProdutosController;

@@ -30,6 +30,10 @@ class VariantesService {
     async desativarVariante(id: string){
         return await this._variantesRepository.desativar(id)
     }
+
+    async desativarValorVariante(id: string){
+        return await this._variantesValoresRepository.desativar(id)
+    }
 }
 
 export default VariantesService;

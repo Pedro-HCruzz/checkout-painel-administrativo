@@ -92,6 +92,10 @@ class ProdutosService {
     async desativarVariante(id: string,){
         return await this._variantesService.desativarVariante(id)
     }
+
+    async desativarValorVariante(id: string,){
+        return await this._variantesService.desativarValorVariante(id)
+    }
 }
 
 export default ProdutosService;
